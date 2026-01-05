@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Action for the Dashboard -->
+    <record id="action_critical_stock_dashboard" model="ir.actions.act_window">
+        <field name="name">Product Critical Stock</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_low_stock', '=', True)]</field>
+        <field name="context">{'group_by': 'categ_id'}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No critical stock found!
+            </p>
+            <p>
+                Products usually appear here when their quantity is below the minimum threshold.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_critical_stock_dashboard"
+              name="Critical Stock"
+              parent="stock.menu_warehouse_report"
+              action="action_critical_stock_dashboard"
+              sequence="20"/>
+</odoo>
