@@ -1,0 +1,49 @@
+﻿<odoo>
+    <record id="view_stock_storage_tag_form" model="ir.ui.view">
+        <field name="name">stock.storage.tag.form</field>
+        <field name="model">stock.storage.tag</field>
+        <field name="arch" type="xml">
+            <form string="Storage Tag">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="color" widget="color_picker"/>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_stock_storage_tag_tree" model="ir.ui.view">
+        <field name="name">stock.storage.tag.tree</field>
+        <field name="model">stock.storage.tag</field>
+        <field name="arch" type="xml">
+            <tree string="Storage Tags" editable="bottom">
+                <field name="name"/>
+                <field name="color" widget="color_picker"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_stock_storage_tag" model="ir.actions.act_window">
+        <field name="name">Storage Tags</field>
+        <field name="res_model">stock.storage.tag</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new storage tag
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_stock_storage_tag"
+              parent="stock.menu_stock_config_settings"
+              action="action_stock_storage_tag"
+              sequence="20"/>
+</odoo>

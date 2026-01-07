@@ -1,0 +1,35 @@
+<odoo>
+    <record id="view_stock_tag_assign_wizard_form" model="ir.ui.view">
+        <field name="name">stock.tag.assign.wizard.form</field>
+        <field name="model">stock.tag.assign.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Assign Tags">
+                <group>
+                    <field name="mode" widget="radio"/>
+                    <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                </group>
+                <footer>
+                    <button name="action_assign_tags" string="Apply" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_stock_tag_assign_wizard" model="ir.actions.act_window">
+        <field name="name">Assign Tags</field>
+        <field name="res_model">stock.tag.assign.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="product.model_product_template"/>
+    </record>
+
+    <record id="action_stock_tag_assign_wizard_variant" model="ir.actions.act_window">
+        <field name="name">Assign Tags</field>
+        <field name="res_model">stock.tag.assign.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="product.model_product_product"/>
+    </record>
+</odoo>
+    
