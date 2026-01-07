@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_payroll_benefit_config_tree" model="ir.ui.view">
+        <field name="name">payroll.benefit.config.tree</field>
+        <field name="model">payroll.benefit.config</field>
+        <field name="arch" type="xml">
+            <tree string="Configuración de Beneficios" editable="bottom">
+                <field name="name"/>
+                <field name="contract_type"/>
+                <field name="benefit_amount"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_payroll_benefit_config_form" model="ir.ui.view">
+        <field name="name">payroll.benefit.config.form</field>
+        <field name="model">payroll.benefit.config</field>
+        <field name="arch" type="xml">
+            <form string="Configuración de Beneficios">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="contract_type"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                        <group>
+                            <field name="benefit_amount"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_payroll_benefit_config" model="ir.actions.act_window">
+        <field name="name">Beneficios</field>
+        <field name="res_model">payroll.benefit.config</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crear una nueva configuración de beneficio
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_payroll_benefit_config"
+              name="Beneficios de Contrato"
+              parent="hr.menu_human_resources_configuration"
+              action="action_payroll_benefit_config"
+              sequence="100"/>
+</odoo>
